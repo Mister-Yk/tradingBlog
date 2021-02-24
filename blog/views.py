@@ -1,11 +1,20 @@
 from django.shortcuts import render
+from . models import Accueil, Studio , Equipe
 
 # Create your views here.
 
 def home(request):
 
-    context = {
+    accueil = Accueil.objects.all()[1:]
+    studio = Studio.objects.all()[:1]
 
+    equipe = Equipe.objects.all()
+
+    context = {
+        'accueil':accueil,
+        'studio':studio,
+        'equipes':equipe
+        
     }
     return render(request, 'index.html', context)
 
