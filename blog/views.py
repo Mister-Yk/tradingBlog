@@ -34,3 +34,12 @@ def projetDetail(request):
     }
 
     return render(request, 'projet-detail.html', context)
+
+
+def contact(request):
+
+    context = {
+
+    }
+
+    return render(request, 'contact.html', context)
