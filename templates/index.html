@@ -42,10 +42,7 @@
 
                 <div class="col-lg-7 mx-auto col-md-10 col-12">
                      
-                     {% for studio in studio %}
-                          
-                 
-                              
+                     {% for studio in studio %}          
                          <div class="about-info">
 
                               <h2 class="mb-4" data-aos="fade-up">{{ studio.titre }}</h2>
@@ -68,37 +65,38 @@
  <!-- PROJECT -->
  <section class="project section-padding" id="project">
       <div class="container-fluid">
-           <div class="row">
-              
-                <div class="col-md-4 col-lg-12">
-               {% for equipe in equipes  %}
-                    <h2 class="mb-5 text-center" data-aos="fade-up">
-                        Please take a look through our
-                        <strong>featured Digital Trends</strong>
-                    </h2>
+          <div class="row">
 
-              
+               <div class="col-lg-12 col-12">
+
+                   <h2 class="mb-5 text-center" data-aos="fade-up">
+                       Please take a look through our
+                       <strong>featured Digital Trends</strong>
+                   </h2>
+                 
                     <div class="owl-carousel owl-theme" id="project-slide">
-                    <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
-                         <img src="{{ equipe.images.url }}" class="img-fluid" alt="project image">
+                         {% for equipe  in equipes %}
+                         <div class="item project-wrapper" data-aos="fade-up">
+                              <img src="{{ equipe.images.url }}" class="img-fluid" alt="project image"  height="400">
 
-                         <div class="project-info">
-                              <small>{{ equipe.specialite }}</small>
+                              <div class="project-info">
+                                   <small>{{ equipe.nom }}</small>
 
-                              <h3>
-                                   <a href="{% url 'projetDetail' %}">
-                                        <span>{{ equipe.nom }}</span>
-                                        <i class="fa fa-angle-right project-icon"></i>
-                                   </a>
-                              </h3>
-                         </div>
+                                   <h3>
+                                        <a href="project-detail.html">
+                                             <span>{{ equipe.specialite }}</span>
+                                             <i class="fa fa-angle-right project-icon"></i>
+                                        </a>
+                                   </h3>
+                              </div>
+                         </div> 
+                         {% endfor %}
+                       
                     </div>
+                  
+               </div>
 
-                    </div>
-               {% endfor %}
-                </div>
-             
-           </div>
+          </div>
       </div>
  </section>
 
@@ -106,32 +104,34 @@
  <!-- TESTIMONIAL -->
  <section class="testimonial section-padding">
       <div class="container">
+           
+           {% for testimonial in testimonial %}
            <div class="row">
+               <div class="col-lg-6 col-md-5 col-12">
+                   <div class="contact-image" data-aos="fade-up">
 
-                <div class="col-lg-6 col-md-5 col-12">
-                    <div class="contact-image" data-aos="fade-up">
+                     <img src="{{ testimonial.images.url }}" class="img-fluid" alt="website">
+                   </div>
+               </div>
 
-                      <img src="{% static 'images/female-avatar.png' %}" class="img-fluid" alt="website">
-                    </div>
-                </div>
+               <div class="col-lg-6 col-md-7 col-12">
+               <div class="quote" data-aos="fade-up" data-aos-delay="200"></div>
 
-                <div class="col-lg-6 col-md-7 col-12">
-                  <h4 class="my-5 pt-3" data-aos="fade-up" data-aos-delay="100">Client Testimonials</h4>
+                 <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">{{ testimonial.text }}</h2>
 
-                  <div class="quote" data-aos="fade-up" data-aos-delay="200"></div>
+                 <p data-aos="fade-up" data-aos-delay="400">
+                   <strong>{{ testimonial.nomauteur }}</strong>
 
-                  <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+                   <span class="mx-1">/</span>
 
-                  <p data-aos="fade-up" data-aos-delay="400">
-                    <strong>Mary Zoe</strong>
+                   <small>{{ testimonial.agence }}</small>
+                 </p>
+               </div>
 
-                    <span class="mx-1">/</span>
-
-                    <small>Digital Agency (CEO)</small>
-                  </p>
-                </div>
-
-           </div>
+          </div>
+           {% endfor %}
+                
+         
       </div>
  </section>
 {% endblock content %}

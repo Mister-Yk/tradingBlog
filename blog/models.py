@@ -143,3 +143,25 @@ class Article(models.Model):
         """Unicode representation of Article."""
         return self.titre
 
+
+
+class Testimonial(models.Model):
+    """Model definition for Testimonial."""
+
+    # TODO: Define fields here
+    text = models.CharField(max_length=300)
+    images =models.FileField(upload_to="images")
+    date = models.DateTimeField(auto_now_add=True)
+    nom = models.CharField(max_length=255)
+    nomauteur = models.CharField(max_length=255)
+    agence = models.CharField(max_length=255)
+
+    class Meta:
+        """Meta definition for Testimonial."""
+
+        verbose_name = 'Testimonial'
+        verbose_name_plural = 'Testimonials'
+
+    def __str__(self):
+        """Unicode representation of Testimonial."""
+        return self.nom
