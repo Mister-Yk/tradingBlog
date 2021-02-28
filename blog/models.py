@@ -45,10 +45,12 @@ class Equipe(models.Model):
     """Model definition for Equipe."""
 
     # TODO: Define fields here
-
     nom = models.CharField(max_length=255)
     specialite = models.CharField(max_length=255)
     images = models.FileField(upload_to="images/equipe")
+    imageblog = models.FileField(upload_to="images/equipe")
+    titre = models.CharField(max_length=255)
+    description = models.TextField()
 
     class Meta:
         """Meta definition for Equipe."""
@@ -60,6 +62,8 @@ class Equipe(models.Model):
         """Unicode representation of Equipe."""
         return self.nom
 
+
+  
 class Auteur(models.Model):
     """Model definition for Auteur."""
 
@@ -83,7 +87,7 @@ class Categorie(models.Model):
 
     # TODO: Define fields here
     titre = models.CharField(max_length=255)
-    text = models.TextField()
+    text = models.CharField(max_length=100)
     images = models.FileField(upload_to="images")
 
     class Meta:
@@ -125,6 +129,9 @@ class Article(models.Model):
     titre = models.CharField(max_length=255)
     soustitre = models.CharField(max_length=300)
     description = models.TextField()
+    titre1 = models.CharField(max_length=100)
+    titre2 = models.CharField(max_length=100)
+    description2 = models.TextField()
     images = models.FileField(upload_to="images")
     auteur = models.ForeignKey(Auteur, on_delete=models.CASCADE, null=True)
     commentaire = models.ForeignKey(Commentaire, on_delete=models.CASCADE, null=True)
@@ -165,3 +172,5 @@ class Testimonial(models.Model):
     def __str__(self):
         """Unicode representation of Testimonial."""
         return self.nom
+
+

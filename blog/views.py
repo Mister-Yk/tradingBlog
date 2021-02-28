@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from . models import Accueil, Studio , Equipe, Testimonial
+from django.shortcuts import render,redirect
+from . models import Accueil, Studio , Equipe, Testimonial, Article, Categorie
 
 # Create your views here.
 
@@ -22,27 +22,44 @@ def home(request):
 
 
 def blog(request):
+
+    article = Article.objects.all()
+    categorie = Categorie.objects.all()
+ 
+  
     context={
+        'articles':article,
+        'categories':categorie
+   
+     
 
     }
 
     return render(request, 'blog.html', context)
 
 
-def detail(request):
-    context = {
+def detail(request, pk):
 
+    try:
+        article = Article.objects.get(id=pk)
+        context = {
+            'article':article
     }
+    except:
+        return redirect('home')
 
-    return render(request, 'blog-detail.html', context)
+    return render(request,'blog-detail.html',context)
 
 
 
-def projetDetail(request):
-
-    context = {
-
+def projetDetail(request, pk):
+    try:
+        equipe = Equipe.objects.get(id=pk)
+        context = {
+            'equipe':equipe,
     }
+    except:
+        return redirect('home')
 
     return render(request, 'projet-detail.html', context)
 
