@@ -174,3 +174,40 @@ class Testimonial(models.Model):
         return self.nom
 
 
+class Contact(models.Model):
+    """Model definition for Contact."""
+
+    # TODO: Define fields here
+    nom = models.CharField(max_length=255, null=True)
+
+    mail = models.EmailField()
+
+    message = models.TextField()
+
+    class Meta:
+        """Meta definition for Contact."""
+
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
+
+    def __str__(self):
+        """Unicode representation of Contact."""
+        return self.nom
+
+
+
+class Newletter(models.Model):
+    """Model definition for Newletter."""
+
+    # TODO: Define fields here
+    email = models.EmailField(null=True)
+    class Meta:
+        """Meta definition for Newletter."""
+
+        verbose_name = 'Newletter'
+        verbose_name_plural = 'Newletters'
+
+    def __str__(self):
+        """Unicode representation of Newletter."""
+        return self.email
+

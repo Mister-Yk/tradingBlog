@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from . models import Accueil, Studio , Equipe, Testimonial, Article, Categorie
+from . models import Accueil, Studio , Equipe, Testimonial, Article, Categorie, Contact, Newletter
 
 # Create your views here.
 
@@ -25,7 +25,15 @@ def blog(request):
 
     article = Article.objects.all()
     categorie = Categorie.objects.all()
- 
+
+    if request.method=="POST":
+        email = request.POST.get('email')
+
+        newletter = Newletter(
+            email=email
+        )
+
+        newletter.save()
   
     context={
         'articles':article,
@@ -65,6 +73,19 @@ def projetDetail(request, pk):
 
 
 def contact(request):
+
+    if request.method=="POST":
+        nom =request.POST.get('nom')
+        email = request.POST.get('mail')
+        message = request.POST.get('message')
+
+        contact = Contact(
+            nom=nom,
+            mail=email, 
+            message=message
+        )
+
+        contact.save()
 
     context = {
 

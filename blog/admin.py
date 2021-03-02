@@ -10,3 +10,6 @@ admin.site.register(Auteur)
 admin.site.register(Categorie)
 admin.site.register(Commentaire)
 admin.site.register(Testimonial)
+admin.site.register(Contact)
+admin.site.register(Newletter)
+

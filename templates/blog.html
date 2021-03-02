@@ -60,22 +60,24 @@
                     <h4 data-aos="fade-up" data-aos-delay="200">Email Newsletter</h4>
 
                     <h2 data-aos="fade-up" data-aos-delay="300">Let’s stay up-to-date. We'll share you all good stuffs.</h2>
-                    <form action="#" method="get" enctype="multipart/form-data">
-                    <div class="form-group mt-4" data-aos="fade-up" data-aos-delay="400">
-                      <input name="email" type="email" class="form-control" 
-                          id="email" aria-describedby="emailHelp" placeholder="Please enter your email" required>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
 
-                      <small id="emailHelp" class="form-text text-muted">We'll NOT share your email address to anyone else.</small>
+                      <div class="form-group mt-4" data-aos="fade-up" data-aos-delay="400">
+                        <input name="email" type="email" class="form-control" value="email" 
+                            id="email" aria-describedby="emailHelp" placeholder="Please enter your email" required>
 
-                    </div>
+                        <small id="emailHelp" class="form-text text-muted">We'll NOT share your email address to anyone else.</small>
 
-                    <div class="form-group form-check" data-aos="fade-up" data-aos-delay="500">
-                      <input name="monthly" type="checkbox" class="form-check-input" id="monthly">
+                      </div>
 
-                      <label class="form-check-label" for="monthly">Please send me a monthly newsletter.</label>
-                    </div>
+                      <div class="form-group form-check" data-aos="fade-up" data-aos-delay="500">
+                        <input name="monthly" type="checkbox" class="form-check-input" id="monthly">
 
-                      <button type="submit" data-aos="fade-up" data-aos-delay="500" class="btn w-100 mt-3">Sign up</button>
+                        <label class="form-check-label" for="monthly">Please send me a monthly newsletter.</label>
+                      </div>
+
+                        <button type="submit" data-aos="fade-up" data-aos-delay="500" class="btn w-100 mt-3">Sign up</button>
                     </form>
                   </div>
 

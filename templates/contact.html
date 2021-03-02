@@ -20,14 +20,16 @@
             
             <!-- Follow https://templatemo.com/contact page to setup your own contact form -->
             
-              <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+              <form action="" method="POST" class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+
+                {% csrf_token %}
                 <div class="row">
                   <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Name">
+                    <input type="text" class="form-control" name="nom" placeholder="Name">
                   </div>
 
                   <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email">
+                    <input type="email" class="form-control" name="mail" placeholder="Email">
                   </div>
 
                   <div class="col-lg-12 col-12">
